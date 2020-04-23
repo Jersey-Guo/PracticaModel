@@ -1,2 +1,3 @@
 rootProject.name='PracticaModel'
 include ':app'
+include ':practicalmodel'

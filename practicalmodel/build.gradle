@@ -1,17 +1,17 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "com.jersey.practicamodel"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -27,10 +27,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation deps.app_compat
-    implementation deps.constraint_layout
-    implementation deps.lifecycle.extensions
     testImplementation deps.junit
     androidTestImplementation deps.atsl.ext_junit
     androidTestImplementation deps.espresso.core
-    implementation project(path: ':practicalmodel')
+
+    api deps.rxjava2
+    api deps.rx_android
+    api deps.retrofit.gson
+    api deps.retrofit.runtime
+    api deps.retrofit.mock
+
+    api deps.auto_size
 }

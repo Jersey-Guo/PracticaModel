@@ -1,39 +1,63 @@
 package com.jersey.practicamodel.ui.main;
 
-import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import android.widget.Toast;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.jersey.practicalmodel.base.BaseFragment;
 import com.jersey.practicamodel.R;
+import com.jersey.practicamodel.login.LoginEntity;
+import com.jersey.practicamodel.login.LoginIPresenter;
+import com.jersey.practicamodel.login.LoginView;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends BaseFragment<LoginIPresenter, LoginView> implements LoginView {
 
-    private MainViewModel mViewModel;
 
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
-    @Nullable
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+    protected LoginIPresenter getPresenter() {
+        return new LoginIPresenter();
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        // TODO: Use the ViewModel
+    public int getLayoutId() {
+        return R.layout.main_fragment;
     }
 
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        MainViewHolder holder = new MainViewHolder(mActivity, mView);
+        holder.setPresenter(iPresenter);
+    }
+
+
+    @Override
+    public void onSuccess(LoginEntity o) {
+        Toast.makeText(mActivity, o.name, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFailed(int code, String error) {
+        Toast.makeText(mActivity, code + "--" + error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public String getName() {
+        return "xiaoming";
+    }
+
+    @Override
+    public String getPwd() {
+        return "daming";
+    }
+
+    @Override
+    public String getMobile() {
+        return "1";
+    }
 }
