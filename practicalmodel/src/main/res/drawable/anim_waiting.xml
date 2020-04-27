@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@mipmap/waiting1"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting2"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting3"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting4"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting5"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting6"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting7"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting8"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting9"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting10"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting11"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting12"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting13"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting14"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting15"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting16"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting17"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting18"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting19"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/waiting20"
+        android:duration="40" />
+</animation-list>

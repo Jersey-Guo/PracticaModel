@@ -1,13 +1,12 @@
 package com.jersey.practicamodel.login;
 
 import android.text.TextUtils;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.jersey.practicalmodel.base.BaseCallback;
 import com.jersey.practicalmodel.mvp.BasePresenter;
-import com.jersey.practicamodel.App;
+import com.jersey.practicalmodel.uis.ToastUtils;
+import com.jersey.practicalmodel.utils.LogUtil;
+import com.jersey.practicamodel.interfaces.JerseyCallback;
 
 
 public class LoginIPresenter extends BasePresenter<LoginModel, LoginView> {
@@ -29,14 +28,29 @@ public class LoginIPresenter extends BasePresenter<LoginModel, LoginView> {
             view.onFailed(0, "pwd is empty");
             return;
         }
-        model.login(name, pwd, new BaseCallback<LoginEntity>() {
+        model.login(view.getAct(), name, pwd, new JerseyCallback<LoginEntity>() {
             @Override
-            public void onCallback(LoginEntity loginEntity) {
-                if (loginEntity.isSuccess()) {
-                    view.onSuccess(loginEntity);
-                } else {
-                    view.onFailed(loginEntity.code, loginEntity.errorMsg);
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+
+            @Override
+            public void onNext(LoginEntity entity) {
+                UserInfoBean infoBean = entity.getUser_info();
+                if (infoBean != null) {
+                    ToastUtils.showLong(infoBean.toString());
                 }
+
             }
         });
     }
@@ -55,7 +69,7 @@ public class LoginIPresenter extends BasePresenter<LoginModel, LoginView> {
                 if (loginEntity.isSuccess()) {
                     view.onSuccess(loginEntity);
                 } else {
-                    view.onFailed(loginEntity.code, loginEntity.errorMsg);
+                    view.onFailed(loginEntity.getCode(), loginEntity.getMsg());
                 }
             }
         });

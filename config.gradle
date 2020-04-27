@@ -138,7 +138,7 @@ lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle
 lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
 lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
 lifecycle.livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
-lifecycle.extensions="androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
 deps.lifecycle = lifecycle
 
 deps.material = "com.google.android.material:material:$versions.material"
@@ -172,6 +172,7 @@ def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.adapter_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 deps.retrofit = retrofit
 
 deps.robolectric = "org.robolectric:robolectric:$versions.robolectric"
@@ -186,6 +187,7 @@ deps.room = room
 deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
 
 deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+
 
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 
@@ -207,5 +209,6 @@ def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
+
 ext.addRepos = this.&addRepos
 

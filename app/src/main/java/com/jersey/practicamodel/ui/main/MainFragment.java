@@ -1,6 +1,7 @@
 package com.jersey.practicamodel.ui.main;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import android.widget.Toast;
@@ -38,7 +39,7 @@ public class MainFragment extends BaseFragment<LoginIPresenter, LoginView> imple
 
     @Override
     public void onSuccess(LoginEntity o) {
-        Toast.makeText(mActivity, o.name, Toast.LENGTH_LONG).show();
+        Toast.makeText(mActivity, o.getUser_info().getName(), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -59,5 +60,10 @@ public class MainFragment extends BaseFragment<LoginIPresenter, LoginView> imple
     @Override
     public String getMobile() {
         return "1";
+    }
+
+    @Override
+    public Activity getAct() {
+        return mActivity;
     }
 }
