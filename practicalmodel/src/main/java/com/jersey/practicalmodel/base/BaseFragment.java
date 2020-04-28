@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.jersey.practicalmodel.mvp.BasePresenter;
 import com.jersey.practicalmodel.mvp.BaseView;
 
-public abstract class BaseFragment<P extends BasePresenter,V extends BaseView> extends Fragment implements BaseView {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView {
 
     protected Activity mActivity;
     protected View mView;
@@ -45,6 +46,12 @@ public abstract class BaseFragment<P extends BasePresenter,V extends BaseView> e
         }
     }
 
+    public  <V extends View> V findViewById(@IdRes int res) {
+        if (mView != null) {
+            return mView.findViewById(res);
+        }
+        return null;
+    }
 
 
     @Override

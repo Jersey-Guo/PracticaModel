@@ -15,7 +15,6 @@ import com.jersey.practicalmodel.utils.NetworkUtils;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -102,10 +101,6 @@ public class HttpManager {
     public <T> void observer(Activity activity, boolean isShowDialog, Dialog dialog
             , Observable<T> o, HttpCallback<T> callback) {
 
-        if (!NetworkUtils.isConnected()) {
-            callback.onError(ErrorCode.NO_ERROR, HttpConstants.NO_NET_MSG);
-            return;
-        }
         o.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -141,10 +136,6 @@ public class HttpManager {
      */
     public <T> void uplodaFile(Activity activity, boolean isShowDialog, Dialog dialog
             , String url, Map<String, String> params, List<BaseFileBean> fileList, HttpCallback<T> callback) {
-        if (!NetworkUtils.isConnected()) {
-            callback.onError(ErrorCode.NO_ERROR, HttpConstants.NO_NET_MSG);
-            return;
-        }
         if (fileList == null || fileList.isEmpty()) {
             callback.onError(ErrorCode.ERR_FILE_IS_EMPTY, HttpConstants.ERR_FILE_IS_EMPTY);
             return;

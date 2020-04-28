@@ -78,6 +78,9 @@ public class PracticalObserver<T> extends DisposableObserver<T> {
 
     @Override
     public void onError(Throwable e) {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
         onException(e);
     }
 

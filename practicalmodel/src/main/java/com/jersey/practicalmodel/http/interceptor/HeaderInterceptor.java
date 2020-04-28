@@ -20,7 +20,7 @@ public class HeaderInterceptor implements Interceptor {
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json; charset=utf-8")
                 .method(originalRequest.method(), originalRequest.body());
-        requestBuilder.addHeader("Authorization", "Bearer " + HttpConstants.TOKEN);//添加请求头信息，服务器进行token有效性验证
+        requestBuilder.addHeader("Authorization", HttpConstants.TOKEN);//添加请求头信息，服务器进行token有效性验证
         Request request = requestBuilder.build();
         return chain.proceed(request);
     }

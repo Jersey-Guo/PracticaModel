@@ -2,10 +2,8 @@ package com.jersey.practicamodel.login;
 
 import android.text.TextUtils;
 
-import com.jersey.practicalmodel.base.BaseCallback;
 import com.jersey.practicalmodel.mvp.BasePresenter;
 import com.jersey.practicalmodel.uis.ToastUtils;
-import com.jersey.practicalmodel.utils.LogUtil;
 import com.jersey.practicamodel.interfaces.JerseyCallback;
 
 
@@ -41,13 +39,14 @@ public class LoginIPresenter extends BasePresenter<LoginModel, LoginView> {
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-
+                ToastUtils.showLong(errorMsg);
             }
 
             @Override
             public void onNext(LoginEntity entity) {
                 UserInfoBean infoBean = entity.getUser_info();
                 if (infoBean != null) {
+                    view.onSuccess(infoBean);
                     ToastUtils.showLong(infoBean.toString());
                 }
 
@@ -63,15 +62,6 @@ public class LoginIPresenter extends BasePresenter<LoginModel, LoginView> {
             return;
         }
 
-        model.sendCode(mobile, new BaseCallback<LoginEntity>() {
-            @Override
-            public void onCallback(LoginEntity loginEntity) {
-                if (loginEntity.isSuccess()) {
-                    view.onSuccess(loginEntity);
-                } else {
-                    view.onFailed(loginEntity.getCode(), loginEntity.getMsg());
-                }
-            }
-        });
+
     }
 }
